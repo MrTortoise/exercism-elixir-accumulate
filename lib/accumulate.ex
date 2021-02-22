@@ -16,11 +16,8 @@ defmodule Accumulate do
   """
 
   @spec accumulate(list, (any -> any)) :: list
-  def accumulate(list, fun) do
-    list
-    |> map(fun)
-  end
+  def accumulate(list, fun), do: map(list, fun)
 
-  def map([], _), do: []
-  def map([h | t], to_apply), do: [to_apply.(h) | map(t, to_apply)]
+  defp map([], _), do: []
+  defp map([h | t], to_apply), do: [to_apply.(h) | map(t, to_apply)]
 end
